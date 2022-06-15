@@ -43,40 +43,49 @@ class PizzaContainerAdmin extends StatelessWidget {
                 spreadRadius: 0)
           ]),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Padding(
-            padding: const EdgeInsets.only(
-                left: 17.5, top: 71.5, bottom: 71.5, right: 20),
-            child: SizedBox(
-                width: 75,
-                height: 75,
-                child: Image.asset(
-                  'assets/images/pizza.png',
-                  fit: BoxFit.fill,
-                )),
-          ),
-          Column(mainAxisSize: MainAxisSize.min, children: [
-            Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              Text(
-                'Name',
-                style: UIStyles.w600s18(),
-              ),
-              titleTextFields(title, onChangedTitle, TextInputType.name,context),
-            ]),
-            const SizedBox(
-              height: 20,
+          Row(children: [
+            Padding(
+              padding: const EdgeInsets.only(
+                  left: 17.5, top: 71.5, bottom: 71.5, right: 20),
+              child: SizedBox(
+                  width:  MediaQuery.of(context).size.width * 0.135,
+                  height:  MediaQuery.of(context).size.width * 0.135,
+                  child: Image.asset(
+                    'assets/images/pizza.png',
+                  )),
             ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
+            Column(mainAxisSize: MainAxisSize.min, children: [
+              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                 Text(
-                  'Price',
+                  'Name',
                   style: UIStyles.w600s18(),
                 ),
-                titleTextFields(price!.toStringAsFixed(0), onChangedPrice,
-                    TextInputType.number,context),
-              ],
-            ),
+                SizedBox(
+                  width: MediaQuery.of(context).size.width * 0.23,
+                  child: titleTextFields(
+                      title, onChangedTitle, TextInputType.name, context),
+                ),
+              ]),
+              const SizedBox(
+                height: 20,
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Price',
+                    style: UIStyles.w600s18(),
+                  ),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.23,
+                    child: titleTextFields(price!.toStringAsFixed(0),
+                        onChangedPrice, TextInputType.number, context),
+                  ),
+                ],
+              ),
+            ]),
           ]),
           Counter(
               quantity: maxQuantity,
@@ -88,14 +97,13 @@ class PizzaContainerAdmin extends StatelessWidget {
   }
 
   titleTextFields(String? initialText, Function(String? text) onChanged,
-      TextInputType type,BuildContext context) {
+      TextInputType type, BuildContext context) {
     late final TextEditingController controller =
         TextEditingController(text: initialText);
     controller.selection = TextSelection.fromPosition(
         TextPosition(offset: controller.text.length));
     return SizedBox(
       height: 32,
-      width: MediaQuery.of(context).size.width * 0.235,
       child: TextField(
         cursorColor: UIColors.coursorColor,
         keyboardType: type,

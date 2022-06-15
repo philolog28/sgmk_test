@@ -49,7 +49,7 @@ class PizzaContainerCatalog extends StatelessWidget {
                       fit: BoxFit.fill,
                     )),
               ),
-              ConstrainedBox(constraints: BoxConstraints(maxWidth: MediaQuery.of(context).size.width*0.4),
+              ConstrainedBox(constraints: BoxConstraints(maxWidth: MediaQuery.of(context).size.width*0.35),
               child: Text('$title', style: UIStyles.w600s18(),overflow: TextOverflow.clip,)),
             ]),
             Padding(

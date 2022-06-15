@@ -9,7 +9,10 @@ class PizzaContainerCart extends StatelessWidget {
   const PizzaContainerCart({
     Key? key,
     required this.title,
-    required this.price,required this.quantity, required this.decrement, required this.increment,
+    required this.price,
+    required this.quantity,
+    required this.decrement,
+    required this.increment,
   }) : super(key: key);
   final String? title;
   final double? price;
@@ -36,31 +39,43 @@ class PizzaContainerCart extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Row(children: [
-            Padding(
-              padding: const EdgeInsets.only(
-                  left: 12, right: 20, bottom: 12, top: 12),
-              child: SizedBox(
+          SizedBox(
+            width:MediaQuery.of(context).size.width * 0.45 ,
+            child: Row(children: [
+              Padding(
+                padding: const EdgeInsets.only(
+                    left: 12, right: 20, bottom: 12, top: 12),
+                child: SizedBox(
                   width: 75,
                   height: 75,
                   child: Image.asset(
                     'assets/images/pizza.png',
                     fit: BoxFit.fill,
-                  )),
-            ),
-            ConstrainedBox(constraints: BoxConstraints(maxWidth: MediaQuery.of(context).size.width*0.3),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Text('$title', style: UIStyles.w600s18(),overflow: TextOverflow.clip,),
-                    Text('\$${price!.toStringAsFixed(0)}',
-                        style: UIStyles.w600s18Primary()),
-                  ],
-                )),
-
-          ]),
-          Counter(quantity:quantity , decrement: decrement, increment:increment ),
+                  ),
+                ),
+              ),
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.all(0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        '$title',
+                        style: UIStyles.w600s18(),
+                        overflow: TextOverflow.clip,
+                      ),
+                      Text('\$${price!.toStringAsFixed(0)}',
+                          style: UIStyles.w600s18Primary()),
+                    ],
+                  ),
+                ),
+              ),
+            ]),
+          ),
+          Counter(
+              quantity: quantity, decrement: decrement, increment: increment),
         ],
       ),
     );

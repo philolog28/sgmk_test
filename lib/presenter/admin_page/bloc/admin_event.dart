@@ -9,9 +9,6 @@ abstract class AdminEvent extends Equatable {
 
 class AdminLoadingRequested extends AdminEvent {
   const AdminLoadingRequested();
-
-  @override
-  List<Object?> get props => [];
 }
 class ChangePizzaTitle extends AdminEvent {
   const ChangePizzaTitle( {required this.newTitle,required this.index,});

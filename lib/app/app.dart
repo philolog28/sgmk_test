@@ -4,7 +4,6 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:sgmk_test/domain/repositories/pizza_repository.dart';
 import 'package:sgmk_test/presenter/catalog_page/catalog_page.dart';
 
-import '../presenter/admin_page/admin_page.dart';
 
 
 class App extends StatelessWidget {
@@ -15,8 +14,8 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return RepositoryProvider<PizzaRepository>(
-        create: (_)=> pizzaRepository,
-            child: const AppView(),
+      create: (_)=> pizzaRepository,
+      child: const AppView(),
     );
   }
 }
