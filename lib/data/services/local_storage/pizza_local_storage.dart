@@ -24,7 +24,7 @@ class PizzaLocalStorage extends PizzaApi {
       _plugin.setString(key, value);
 
   void _init() {
-    _plugin.remove(kPizzaCollectionKey);
+
     final pizzaJson = _getValue(kPizzaCollectionKey);
     if (pizzaJson != null) {
       final pizza = List<Map>.from(jsonDecode(pizzaJson) as List)
